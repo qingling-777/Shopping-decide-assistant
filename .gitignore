@@ -1,0 +1,64 @@
+# ---------- 密钥 / 环境变量（严禁提交）----------
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.ssh_pass*
+
+# ---------- 运行时数据（含真实用户数据，勿入库）----------
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+*.db
+backend/app/product_data/*.json
+backend/app/crawled_data/*.json
+backend/app/knowledge_dynamic/
+backend/app/static/*.jpg
+backend/app/static/*.jpeg
+backend/app/static/*.png
+backend/app/static/*.webp
+!backend/app/static/.gitkeep
+
+# ---------- 日志 ----------
+*.log
+logs/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------- Node / Expo ----------
+node_modules/
+.expo/
+.expo-shared/
+.metro/
+dist/
+build/
+web-build/
+*.tsbuildinfo
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- 调试产物 ----------
+a.json
+b.json
+c.json
+*_stream.txt
+_tok.txt
+e2e/*.png

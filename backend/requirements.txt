@@ -1,0 +1,19 @@
+# MVP 依赖（与代码实际 import 对齐；目标运行环境 Python 3.10）
+# 2026-08-19 补齐：此前本文件只列 6 行，导致服务 venv 缺包，worker 启动即 ModuleNotFoundError。
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+httpx==0.26.0
+python-dotenv==1.0.0
+
+# —— 数据层 / 外部依赖 ——
+beautifulsoup4>=4.12.0          # ingestion_service / product_service: from bs4 import BeautifulSoup
+sqlalchemy>=2.0.0               # db/database.py + models/*: async engine + ORM
+redis>=5.0.0                    # db/redis.py: redis.asyncio
+asyncpg>=0.29.0                 # create_async_engine("postgresql+asyncpg://") 的异步驱动（本地 dev 环境即用此，无 aiosqlite）
+gunicorn>=21.2.0                # systemd 以 gunicorn + uvicorn worker 拉起服务（运行期需要，非 import）
+tencentcloud-sdk-python>=3.0.0  # captcha_service: DescribeCaptchaResult 票据校验（腾讯云验证码）
+
+# 支付宝当面付（python-alipay-sdk：预下单 alipay.trade.precreate + 异步回调 RSA2 验签）
+python-alipay-sdk>=3.4.0
